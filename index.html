@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ast">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carta del Mesón d'Arlós</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Cormorant Garamond', serif;
+    color:#2d1b0f;
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:
+
+    radial-gradient(circle at 10% 15%,
+    rgba(110,75,25,.20) 0%,
+    transparent 25%),
+
+    radial-gradient(circle at 85% 25%,
+    rgba(120,85,35,.14) 0%,
+    transparent 20%),
+
+    radial-gradient(circle at 80% 80%,
+    rgba(90,60,20,.18) 0%,
+    transparent 30%),
+
+    radial-gradient(circle at 25% 90%,
+    rgba(100,65,20,.12) 0%,
+    transparent 25%),
+
+    linear-gradient(
+    90deg,
+    rgba(90,55,20,.18) 0%,
+    transparent 10%,
+    transparent 90%,
+    rgba(90,55,20,.18) 100%
+    ),
+
+    linear-gradient(
+    #f5e6bc,
+    #efddb0,
+    #e7d09d
+    );
+
+}
+
+/* textura pergamino */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:
+
+    repeating-radial-gradient(
+    circle at 20% 30%,
+    rgba(80,60,30,.025) 0px,
+    rgba(80,60,30,.025) 2px,
+    transparent 3px,
+    transparent 10px
+    ),
+
+    repeating-radial-gradient(
+    circle at 80% 70%,
+    rgba(80,60,30,.02) 0px,
+    rgba(80,60,30,.02) 1px,
+    transparent 2px,
+    transparent 8px
+    );
+
+    opacity:.9;
+    pointer-events:none;
+}
+
+/* desgaste de bordes */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    box-shadow:
+    inset 0 0 150px rgba(60,35,10,.35),
+    inset 0 0 300px rgba(30,15,5,.15);
+
+    pointer-events:none;
+}
+
+.carta{
+
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+
+    font-family:'Uncial Antiqua', cursive;
+
+    text-align:center;
+
+    font-size:4rem;
+
+    color:#5b2010;
+
+    text-shadow:
+    1px 1px 0 #cda85a,
+    2px 2px 3px rgba(0,0,0,.15);
+
+    margin-bottom:15px;
+}
+
+.subtitulo{
+
+    text-align:center;
+
+    font-size:1.4rem;
+
+    color:#6c4d20;
+
+    font-style:italic;
+
+    margin-bottom:40px;
+}
+
+.intro{
+
+    max-width:850px;
+
+    margin:0 auto 50px auto;
+
+    text-align:center;
+
+    font-size:1.4rem;
+
+    line-height:1.8;
+}
+
+.intro::first-letter{
+
+    font-family:'Uncial Antiqua';
+
+    float:left;
+
+    font-size:5rem;
+
+    line-height:.8;
+
+    margin-right:10px;
+
+    color:#8d1d1d;
+}
+
+.adorno{
+
+    text-align:center;
+
+    font-size:2rem;
+
+    color:#9a7b3f;
+
+    margin:40px 0;
+}
+
+.seccion{
+
+    margin-bottom:50px;
+}
+
+.seccion h2{
+
+    font-family:'Cinzel', serif;
+
+    text-align:center;
+
+    font-size:2rem;
+
+    letter-spacing:3px;
+
+    color:#7a1f1f;
+
+    margin-bottom:25px;
+}
+
+.item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    padding:18px 0;
+
+    border-bottom:1px dashed rgba(80,50,20,.25);
+}
+
+.item:last-child{
+    border-bottom:none;
+}
+
+.nombre{
+
+    font-size:1.8rem;
+
+    font-weight:700;
+}
+
+.descripcion{
+
+    margin-top:5px;
+
+    font-size:1.15rem;
+
+    color:#5e4728;
+
+    font-style:italic;
+}
+
+.precio{
+
+    font-size:1.8rem;
+
+    font-weight:bold;
+
+    color:#7a1f1f;
+
+    white-space:nowrap;
+}
+
+.pie{
+
+    margin-top:70px;
+
+    text-align:center;
+
+    font-size:1.5rem;
+
+    color:#6b4a1d;
+
+    font-style:italic;
+}
+
+.sello{
+
+    text-align:center;
+
+    font-size:4rem;
+
+    margin-top:30px;
+
+    opacity:.6;
+
+    color:#8f1e1e;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:25px;
+    }
+
+    h1{
+        font-size:2.4rem;
+    }
+
+    .item{
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .precio{
+        font-size:1.5rem;
+    }
+
+    .nombre{
+        font-size:1.5rem;
+    }
+
+    .intro::first-letter{
+        font-size:4rem;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="carta">
+
+    <h1>⚔ Mesón d'Arlós ⚔</h1>
+
+    <div class="subtitulo">
+        Fiestes de los Exconxuraos · Llanera
+    </div>
+
+    <p class="intro">
+        En los díes de los Exconxuraos, cuando aldeanos, mercaderes y guerreros
+        se xunten baxo los pendones del conceyu, el Mesón d'Arlós abre les sos
+        puertes pa servir viandes y brebaxes a tolos presentes.
+    </p>
+
+    <div class="adorno">
+        ✠ ⚜ ❦ ⚜ ✠
+    </div>
+
+    <div class="seccion">
+
+        <h2>🍖 VIANDES</h2>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Bocadillu de Chorizu</div>
+                <div class="descripcion">
+                    Curáu y preparáu según les costumes de los nuesos mayores.
+                </div>
+            </div>
+            <div class="precio">5 €</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Bocadillu de Panceta</div>
+                <div class="descripcion">
+                    Sabrosu manxar pa los caminantes del reinu.
+                </div>
+            </div>
+            <div class="precio">5 €</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Hamburguesa del Conceyu</div>
+                <div class="descripcion">
+                    Vianda poderosa reservada pa los más famientos.
+                </div>
+            </div>
+            <div class="precio">7 €</div>
+        </div>
+
+    </div>
+
+    <div class="adorno">
+        ❦ ⚜ ✠ ⚜ ❦
+    </div>
+
+    <div class="seccion">
+
+        <h2>🍺 BREBAXES</h2>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Sidra Natural</div>
+                <div class="descripcion">
+                    Escanciada como manda la tradición asturiana.
+                </div>
+            </div>
+            <div class="precio">3 €</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Cerveza del Mesón</div>
+                <div class="descripcion">
+                    Fresca y lista pa acompañar les viandes.
+                </div>
+            </div>
+            <div class="precio">3 €</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Refrescu</div>
+                <div class="descripcion">
+                    Brebaxe ensin alcohol pa mozos y aldeanos.
+                </div>
+            </div>
+            <div class="precio">2,50 €</div>
+        </div>
+
+    </div>
+
+    <div class="adorno">
+        ✠ ⚜ ❦ ⚜ ✠
+    </div>
+
+    <div class="seccion">
+
+        <h2>🍰 DULCES DEL REINU</h2>
+
+        <div class="item">
+            <div>
+                <div class="nombre">Tarta Casera</div>
+                <div class="descripcion">
+                    Delicáu postre apreciáu por nobles y mercaderes.
+                </div>
+            </div>
+            <div class="precio">4 €</div>
+        </div>
+
+    </div>
+
+    <div class="pie">
+        «Que nunca falten viandes nin brebaxes baxo'l pendón d'Arlós»
+    </div>
+
+    <div class="sello">
+        🜲
+    </div>
+
+</div>
+
+</body>
+</html>
