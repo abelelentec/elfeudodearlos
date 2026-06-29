@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="ast">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>El Feudo de Arlós - Carta Medieval</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@500;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+
+body{
+
+min-height:100vh;
+
+background:
+radial-gradient(circle at 15% 20%,
+rgba(120,80,30,.15),
+transparent 25%),
+
+radial-gradient(circle at 85% 80%,
+rgba(120,80,30,.12),
+transparent 30%),
+
+linear-gradient(#f4e5bc,#d8c08a,#e8d2a1);
+
+
+padding:40px;
+
+color:#2d1b0f;
+
+font-family:'uncial antiqua',serif;
+
+}
+
+
+/* Pergamino */
+
+.pergamino{
+
+max-width:1000px;
+margin:auto;
+position:relative;
+
+background:
+radial-gradient(circle at top left,
+rgba(255,255,255,.35),
+transparent 35%),
+
+rgba(255,248,228,.82);
+
+padding:clamp(30px,6vw,70px);
+
+border:2px solid rgba(120,70,20,.25);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.25),
+inset 0 0 45px rgba(120,80,30,.22);
+
+}
+
+
+
+.pergamino:before{
+
+content:"";
+
+position:absolute;
+
+inset:15px;
+
+border:1px solid rgba(90,50,10,.35);
+
+pointer-events:none;
+
+}
+
+
+@keyframes entrada{
+
+from{
+opacity:0;
+transform:translateY(20px)
+}
+
+to{
+opacity:1;
+transform:none
+}
+
+}
+
+
+
+/* Cabecera */
+
+
+h1{
+
+font-family:'Uncial Antiqua';
+
+font-size:clamp(2.2rem,8vw,4rem);
+
+text-align:center;
+
+color:#681b10;
+
+text-shadow:2px 2px #d8b878;
+
+}
+
+.titulo-feudo{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:25px;
+
+margin-bottom:20px;
+
+}
+
+
+.logo-lado{
+
+width:90px;
+
+height:90px;
+
+object-fit:contain;
+
+filter:
+drop-shadow(0 5px 5px rgba(0,0,0,.35));
+
+}
+
+
+
+.titulo-feudo h1{
+
+margin:0;
+
+}
+
+
+@media(max-width:650px){
+
+.titulo-feudo{
+
+gap:10px;
+
+}
+
+
+.logo-lado{
+
+width:55px;
+
+height:55px;
+
+}
+
+}
+
+
+
+.sub{
+
+text-align:center;
+
+font-size:1.5rem;
+
+font-style:italic;
+
+margin:15px;
+
+}
+
+
+.rule{
+
+text-align:center;
+
+font-size:2rem;
+
+color:#805a25;
+
+margin:20px;
+
+}
+
+
+
+.intro{
+
+text-align:center;
+
+font-size:clamp(1.1rem,3vw,1.45rem);
+
+line-height:1.7;
+
+margin-bottom:35px;
+
+}
+
+
+
+.intro:first-letter{
+
+font-size:4rem;
+
+float:left;
+
+font-family:'Uncial Antiqua';
+
+color:#7a1c12;
+
+padding-right:8px;
+
+}
+
+
+
+
+/* Titulos */
+
+h2{
+
+font-family:'Cinzel';
+
+text-align:center;
+
+color:#6d1f11;
+
+font-size:clamp(1.5rem,5vw,2rem);
+
+margin:35px 0 18px;
+
+}
+
+
+
+/* Carta */
+
+
+.item{
+
+display:grid;
+
+grid-template-columns:1fr auto;
+
+gap:20px;
+
+align-items:center;
+
+padding:17px 8px;
+
+border-bottom:1px dashed rgba(100,60,20,.5);
+
+transition:.25s;
+
+}
+
+
+
+.item:hover{
+
+background:rgba(100,60,20,.07);
+
+}
+
+
+
+.nombre{
+
+font-size:clamp(1.2rem,3vw,1.7rem);
+
+font-weight:bold;
+
+}
+
+
+
+.desc{
+
+font-style:italic;
+
+font-size:1.1rem;
+
+color:#5d4426;
+
+}
+
+
+
+/* Precio */
+
+
+.precio{
+
+background:#751d13;
+
+color:#ffe7aa;
+
+padding:8px 18px;
+
+border-radius:40px;
+
+font-family:'Cinzel';
+
+font-weight:bold;
+
+font-size:1.2rem;
+
+
+box-shadow:
+
+0 4px 8px rgba(0,0,0,.3),
+inset 0 0 10px rgba(255,255,255,.2);
+
+
+white-space:nowrap;
+
+}
+
+
+
+/* sello */
+
+
+.logo{
+
+display:block;
+
+width:250px;
+max-width:40%;
+
+margin:15px auto 40px;
+
+filter:
+drop-shadow(5px 5px 5px rgba(0,0,0,.35));
+
+}
+
+
+.pie{
+
+text-align:center;
+
+border-top:2px solid rgba(100,60,20,.3);
+
+margin-top:100px;
+
+padding-top:50px;
+
+font-size:1.4rem;
+
+font-style:italic;
+
+}
+
+
+
+
+/* MOVIL */
+
+
+@media(max-width:650px){
+
+
+body{
+
+padding:8px;
+
+}
+
+
+
+.pergamino{
+
+padding:25px 18px;
+
+}
+
+
+
+.item{
+
+grid-template-columns:1fr;
+
+gap:8px;
+
+}
+
+
+
+.precio{
+
+justify-self:end;
+
+}
+
+
+
+h1{
+
+font-size:2.5rem;
+
+}
+
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="pergamino">
+<div class="titulo-feudo">
+
+<img src="logo1-removebg-preview.png" class="logo-lado" alt="Logo">
+
+<h1>El Feudo de Arlós</h1>
+
+<img src="logo2.png" class="logo-lado" alt="Logo">
+
+</div>
+
+
+<div class="sub">
+
+Fiestes de los Exconxuraos · Llanera
+
+</div>
+
+
+<div class="rule">
+
+✠ ❦ ⚜ ❦ ✠
+
+</div>
+
+
+
+<p class="intro">
+
+En los díes de los Exconxuraos, cuando aldeanos, mercaderes y guerreros
+se xunten baxo los pendones del conceyu, el Feudo de Arlós abre les sos
+puertes pa servir viandes y brebaxes a tolos presentes.
+
+</p>
+
+
+
+
+<h2>✠ VIANDES ✠</h2>
+
+<h2>Pa picar</h2>
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Alitas de pollo con patatas
+</div>
+
+<div class="desc">
+Criau nes caleyes de Arlós.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Rabas de calamar Alioli con patatas
+</div>
+
+<div class="desc">
+Lo más sabroso pa los pequeños guerreros.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Carne guisada con patatas
+</div>
+
+<div class="desc">
+Sabrosu manxar pa los caminantes del reinu.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Tortos con Picadillo al Cabrales
+</div>
+
+<div class="desc">
+Con la meyor farina d'Arlós.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Chorizos a la sidra con patatas
+</div>
+
+<div class="desc">
+Los sabores más tradicionales de Arlós.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Picadillo con patatas
+</div>
+
+<div class="desc">
+Pa fartucase.
+</div>
+
+</div>
+
+<div class="precio">10.00 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Plato de patatas 3 salsas
+</div>
+
+<div class="desc">
+La meyor patata de los huertos d'Arlós.
+</div>
+
+</div>
+
+<div class="precio">6.00 €</div>
+
+</div>
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Vaso de patatas 1 salsa
+</div>
+
+<div class="desc">
+Un bocáu pa siguir la fiesta.
+</div>
+
+</div>
+
+<div class="precio">3.00 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Pizza
+</div>
+
+<div class="desc">
+Sacada del meyor fornu.
+</div>
+
+</div>
+
+<div class="precio">3.00 €</div>
+
+</div>
+
+
+
+
+
+<h2>Pa fartucase · Bocadillos</h2>
+
+
+<div class="item"><div class="nombre">Calamares alioli</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Carne guisada</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Chorizo a la sidra</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Picadillo</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Lomo</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Pollo</div><div class="precio">6 €</div></div>
+
+<div class="item"><div class="nombre">Bacon</div><div class="precio">6 €</div></div>
+
+
+
+
+
+<h2> Pa fartucase · Hamburgueses </h2>
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Mc Arlós vacuno
+</div>
+
+<div class="desc">
+Vacuno, lechuga, queso, bacon, cebolla crujiente
+y salsa Mc Arlós.
+</div>
+
+</div>
+
+<div class="precio">12 €</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Mc Arlós pollo
+</div>
+
+<div class="desc">
+Pollo, lechuga, queso, bacon, cebolla crujiente
+y salsa mostaza y miel.
+</div>
+
+</div>
+
+<div class="precio">12 €</div>
+
+</div>
+
+
+
+
+
+<h2>⚜ BREBAXES ⚜</h2>
+
+
+<div class="item">
+
+<div>
+
+<div class="nombre">
+Sidra Natural · Cerveza · Refrescos · Café · Cacharros
+</div>
+
+
+<div class="desc">
+Tolos los brebaxes necesarios pa disfrutar de los Exconxuraos 2026.
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="pie">
+
+«Que nunca falten viandes nin brebaxes baxo'l pendón d'Arlós»
+
+</div>
+
+
+
+<div class="sello">
+
+
+<img src="logo1-removebg-preview.png" class="logo" alt="Logo El Feudo de Arlós">
+
+
+<h1>⚜ El Feudo de Arlós ⚜</h1>
+
+</div>
+
+
+
+</div>
+
+
+</body>
+
+</html>
