@@ -691,7 +691,7 @@ let numeroEntrada="";
 
 
 
-function cargarVoces(){
+/function cargarVoces(){
 
 
 let selector =
@@ -974,58 +974,7 @@ let texto =
 112
 
 
-let voz =
 
-new SpeechSynthesisUtterance(texto);
-
-
-
-
-
-let voces =
-speechSynthesis.getVoices();
-
-
-
-let seleccion =
-document.getElementById("voz").value;
-
-
-
-
-if(voces[seleccion]){
-
-voz.voice=voces[seleccion];
-
-}
-
-
-
-
-
-voz.lang="es-ES";
-
-
-voz.rate=.75;
-
-
-voz.pitch=.6;
-
-
-voz.volume=1;
-
-
-
-
-
-speechSynthesis.cancel();
-
-
-speechSynthesis.speak(voz);
-
-
-
-}
 
 
 
